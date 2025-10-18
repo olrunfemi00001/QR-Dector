@@ -1,0 +1,6 @@
+django 
+djangorestframework 
+opencv-python 
+pyzbar 
+requests
+drf-yasg
