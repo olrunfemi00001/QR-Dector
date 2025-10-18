@@ -4,3 +4,5 @@ opencv-python
 pyzbar 
 requests
 drf-yasg
+gunicorn 
+dj-database-url
