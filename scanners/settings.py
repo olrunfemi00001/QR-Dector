@@ -36,7 +36,7 @@ SECRET_KEY = 'django-insecure-5)o6=5hm(hhx0!1tar@9-riv@o9jjx1-6kxg4)=^3!zf9c396f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://qr-dector1.onrender.com','qr-dector1.onrender.com'
+ALLOWED_HOSTS = ['https://qr-dector4.onrender.com','qr-dector4.onrender.com'
                  ]
 
 

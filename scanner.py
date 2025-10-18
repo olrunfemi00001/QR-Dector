@@ -2,7 +2,7 @@ import cv2
 import hashlib
 import requests
 
-API_URL = "https://qr-dector1.onrender.com/api/QR/"
+API_URL = "https://qr-dector4.onrender.com/api/QR/"
 
 def send_qr_to_api(qr_text):
     qr_hash = hashlib.sha256(qr_text.encode()).hexdigest()
