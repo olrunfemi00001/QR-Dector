@@ -1,17 +1,19 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-import requests
-from .models import QRDetection
-
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 import requests
 from .models import QRDetection
 from .serializers import QRDetectionSerializer
 
+
 class QRReceiveView(APIView):
+
+    @swagger_auto_schema(
+        request_body=QRDetectionSerializer,
+        responses={200: 'QR processed successfully'}
+    )
     def post(self, request):
         serializer = QRDetectionSerializer(data=request.data)
         if not serializer.is_valid():
@@ -22,7 +24,7 @@ class QRReceiveView(APIView):
         # Save to database if not already exists
         obj, created = QRDetection.objects.get_or_create(qr_hash=qr_data)
 
-        # Example webhook
+        # Example webhook (for demo purposes)
         webhook_url = 'https://example.com/webhook'
         contact_info = {"name": "John Doe", "email": "johndoe@example.com"}
         requests.post(webhook_url, json=contact_info)
