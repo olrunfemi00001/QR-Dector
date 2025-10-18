@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 import dj_database_url
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 DATABASES = {
