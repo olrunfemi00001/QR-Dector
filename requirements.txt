@@ -6,5 +6,7 @@ requests
 drf-yasg
 gunicorn 
 dj-database-url
-corsheaders
+django-cors-headers
 whitenoise
+
+python-decouple
