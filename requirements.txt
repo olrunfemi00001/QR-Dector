@@ -6,3 +6,5 @@ requests
 drf-yasg
 gunicorn 
 dj-database-url
+corsheaders
+whitenoise
