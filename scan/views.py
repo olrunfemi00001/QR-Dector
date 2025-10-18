@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 import cv2, hashlib, requests
 from django.http import StreamingHttpResponse
 from .models import QRDetection
@@ -12,7 +13,15 @@ from .serializers import QRDetectionSerializer
 # QR API Endpoint
 # ----------------------------
 class QRReceiveView(APIView):
+
     @swagger_auto_schema(
+        operation_description=(
+            "Receives QR hashes from the local scanner or live stream.\n\n"
+            "**Live Stream Info:**\n"
+            "To test real-time detection locally, open your browser at `/live/`.\n"
+            "It will show a live camera feed, detect QR codes, and automatically send them here.\n\n"
+            "_Note: The live stream only works locally — Render and most cloud hosts do not support OpenCV camera feeds._"
+        ),
         request_body=QRDetectionSerializer,
         responses={200: 'QR processed successfully'}
     )
@@ -86,5 +95,7 @@ def generate_frames():
 
 def live_stream_view(request):
     """Live video feed with automatic QR detection + API sending"""
-    return StreamingHttpResponse(generate_frames(),
-                                 content_type='multipart/x-mixed-replace; boundary=frame')
+    return StreamingHttpResponse(
+        generate_frames(),
+        content_type='multipart/x-mixed-replace; boundary=frame'
+    )
